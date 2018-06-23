@@ -4,9 +4,19 @@ import java.util.*;
 
 public class GenericSorting {
 
-	public static <t> void genSort(t[] arr) {
+	public static <t extends Comparable<t>> void genSort(t[] arr) {
 
-		Arrays.sort(arr);
+		for(int i=0;i<arr.length;i++) {
+			for(int j=0; j<arr.length-i-1;j++) {
+				if(arr[j].compareTo(arr[j+1]) > 0) {
+				t temp = arr[j];
+				arr[j] = arr[j+1];
+				arr[j+1] = temp;
+			}
+			}
+				
+		}
+		
 		for(int i =0; i<5;i++)
 		System.out.print(arr[i] + " ");
 	}
